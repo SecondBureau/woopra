@@ -55,8 +55,8 @@ class WoopraFrontend extends Woopra {
 	 		if (($event_status[$data['action']] == 1)) {
 		 		switch($data['action']) {
 		 			case "search_query":
-		 				if (isset($_GET["s"]) && $_SERVER['HTTP_USER_AGENT'] != 'cUrlSB') {
-							$this->woopra->track("wp search", array("query" => "test" . $_SERVER['HTTP_USER_AGENT'] . "|" . $_GET["s"]), true);
+		 				if (isset($_GET["s"])) {
+							$this->woopra->track("wp search", array("query" => "test" . $_SERVER['HTTP_XWPSEARCH'] . "|" . $_GET["s"] . '|' . $_GET["test"]), true);
 						}
 		 			break;
 		 			case "comment_post":
